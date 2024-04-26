@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            line-height: 1.6;
+            position: relative; /* Establish relative positioning for containing elements */
+            overflow-x: hidden; /* Hide horizontal overflow */
+            background: linear-gradient(135deg, #dfe6e9, #b2bec3); /* Light bluish-gray gradient background */
+        }
+        /* Header Styles */
+        header {
+            background-color: #2c3e50; /* Dark blue header background */
+            color: #fff; /* White text color */
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        /* Navigation Styles */
+        nav {
+            background-color: #34495e; /* Dark blue navigation background */
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: #fff; /* White text color */
+            text-decoration: none;
+            margin: 0 20px;
+            transition: color 0.3s ease;
+        }
+        nav a:hover {
+            color: #e74c3c; /* Red on hover */
+        }
+        /* Container Styles */
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.95); /* Subtle white background */
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        /* Card Styles */
+        .card {
+            background-color: #fff; /* White card background */
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: transform 0.5s ease-in-out; /* Adjust card movement */
+            position: relative;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to My Django Home Page!</h1>
+    </header>
+    <nav>
+        <a href="{% url 'register' %}">
+            <i class="fas fa-user-plus"></i> Register
+        </a>
+        <a href="{% url 'login' %}">
+            <i class="fas fa-sign-in-alt"></i> Login
+        </a>
+    </nav>
+    <div class="container">
+        <p>This is the content of your home page. You can add more content here.</p>
+        <!-- Company Placement Rate Cards -->
+        <div class="card">
+            <h2>Company A</h2>
+            <p>Placement Rate: 90%</p>
+        </div>
+        <div class="card">
+            <h2>Company B</h2>
+            <p>Placement Rate: 85%</p>
+        </div>
+        <div class="card">
+            <h2>Company C</h2>
+            <p>Placement Rate: 95%</p>
+        </div>
+        <!-- Add more cards as needed -->
+    </div>
+</body>
+</html>

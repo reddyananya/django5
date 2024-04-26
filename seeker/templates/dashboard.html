@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seeker Dashboard</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        /* Header Styles */
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        /* Footer Styles */
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+        }
+        /* Sidebar Styles */
+        .sidenav {
+            height: 100%;
+            width: 200px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #555;
+            padding-top: 20px;
+        }
+        .sidenav a {
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 18px;
+            color: #fff;
+            display: block;
+            transition: 0.3s;
+        }
+        .sidenav a:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+        /* Container Styles */
+        .container {
+            margin-left: 220px; /* Adjust margin to accommodate sidebar width */
+            padding: 20px;
+        }
+        h1 {
+            margin-bottom: 30px;
+            color: #333;
+            font-size: 24px;
+            text-transform: uppercase;
+        }
+        .card {
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #333;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        p {
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>My Website</h1>
+    </header>
+    <!-- Sidebar -->
+    <div class="sidenav">
+        <a href="#">Dashboard</a>
+        <a href="{% url 'job_listings' %}">View Job Listings</a>
+        <a href="{% url 'feedback' %}">Provide Feedback</a>
+        <a href="{% url 'view_notifications' %}">View Notifications</a>
+        <!-- Add more sidebar links as needed -->
+    </div>
+    <!-- Main content -->
+    <div class="container">
+        <h1>Welcome to Your Seeker Dashboard</h1>
+        <div class="card">
+            <h2>Software Jobs</h2>
+            <p>Explore software development opportunities.</p>
+            <a href="#" class="button">View Jobs</a>
+        </div>
+        <div class="card">
+            <h2>Data Analyst Jobs</h2>
+            <p>Discover data analysis and visualization roles.</p>
+            <a href="#" class="button">View Jobs</a>
+        </div>
+        <div class="card">
+            <h2>Web Developer Jobs</h2>
+            <p>Find opportunities in web development and design.</p>
+            <a href="{% url 'view_jobs' %}?job_title=web_developer" class="button">View Jobs</a>
+        </div>
+        <div class="card">
+            <h2>UX Designer Jobs</h2>
+            <p>Explore opportunities in User Experience design.</p>
+            <a href="#" class="button">View Jobs</a>
+        </div>
+        <div class="card">
+            <h2>UI Designer Jobs</h2>
+            <p>Discover roles in User Interface design.</p>
+            <a href="#" class="button">View Jobs</a>
+        </div>
+    </div>
+    <footer>
+        &copy; 2024 My Website
+    </footer>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Listings</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        /* Header Styles */
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        /* Footer Styles */
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+        }
+        /* Container Styles */
+        .container {
+            max-width: 1200px; /* Adjust as needed */
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px; /* Adjust padding as needed */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 30px;
+            color: #333;
+            font-size: 24px;
+            text-transform: uppercase;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 12px; /* Increased padding for better spacing */
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        a.button,
+        button[type="submit"] {
+            display: inline-block;
+            padding: 8px 16px;
+            color: #fff;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+        a.edit-button,
+        button.edit-button {
+            background-color: #28a745; /* Green color for "Edit" button */
+        }
+        a.delete-button,
+        button.delete-button {
+            background-color: #dc3545; /* Red color for "Delete" button */
+        }
+        a.view-button,
+        button.view-button {
+            background-color: #007bff; /* Blue color for "View Applications" button */
+        }
+        a.button:hover,
+        button[type="submit"]:hover,
+        a.edit-button:hover,
+        button.edit-button:hover,
+        a.delete-button:hover,
+        button.delete-button:hover,
+        a.view-button:hover,
+        button.view-button:hover {
+            filter: brightness(85%);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>My Website</h1>
+    </header>
+    <div class="container">
+
+        <h1>Job Listings</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Location</th>
+                    <th>Company</th>
+                    <th>Salary</th>
+                    <th>Job Type</th> <!-- Added Job Type column -->
+                    <th>Posted Date</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    <th>View Applications</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for job in job_listings %}
+                <tr>
+                    <td>{{ job.title }}</td>
+                    <td>{{ job.description }}</td>
+                    <td>{{ job.location }}</td>
+                    <td>{{ job.company }}</td>
+                    <td>{{ job.salary }}</td>
+                    <td>{{ job.job_type }}</td> <!-- Added Job Type data -->
+                    <td>{{ job.posted_date }}</td>
+                    <td><a href="{% url 'edit_job' job.id %}" class="edit-button button">Edit</a></td>
+                    <td>
+                        <form action="{% url 'delete_job' job.id %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="delete-button button">Delete</button>
+                        </form>
+                    </td>
+                    <td><a href="{% url 'view_job_applications' job.id %}" class="view-button button">View Applications</a></td>
+              </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <footer>
+        &copy; 2024 My Website
+    </footer>
+</body>
+</html>

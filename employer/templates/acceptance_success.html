@@ -1,0 +1,68 @@
+<!-- acceptance_success.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceptance Success</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 24px;
+            text-transform: uppercase;
+        }
+        p {
+            color: #666;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Application Accepted</h1>
+        <p>Your application has been accepted successfully.</p>
+        <p>Details:</p>
+        <ul>
+            <li><strong>Applicant:</strong> {{ application.user.username }}</li>
+            <li><strong>Cover Letter:</strong> {{ application.cover_letter }}</li>
+            <li><strong>Contact Information:</strong> {{ application.contact_info }}</li>
+            <li><strong>Message:</strong> {{ form.message.value }}</li>
+            <!-- Add more details as needed -->
+        </ul>
+        <a href="{% url 'job_list' %}" class="button">Back to Job Listings</a>
+    </div>
+</body>
+</html>

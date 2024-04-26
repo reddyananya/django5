@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update User Role</title>
+    <style>
+        /* Add your CSS styles here */
+    </style>
+</head>
+<body>
+    <h1>Update User Role</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <label for="role">New Role:</label>
+        <select name="role" id="role" required>
+            <option value="employer">Employer</option>
+            <option value="seeker">Job Seeker</option>
+            <option value="admin">Administrator</option>
+        </select>
+        <button type="submit">Update Role</button>
+    </form>
+</body>
+</html>

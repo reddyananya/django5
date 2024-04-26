@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Success</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        /* Header Styles */
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-top: 20px;
+        }
+        /* Form Styles */
+        form {
+            max-width: 400px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #333;
+            font-weight: bold;
+        }
+        .rating {
+            display: flex;
+            justify-content: center;
+            font-size: 0;
+        }
+        .rating input {
+            display: none;
+        }
+        .rating label {
+            font-size: 30px;
+            color: #ccc;
+            cursor: pointer;
+        }
+        .rating label:hover,
+        .rating label:hover ~ label,
+        .rating input:checked ~ label {
+            color: #ffcc00;
+        }
+        button[type="submit"] {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Thank you for your feedback!</h1>
+    <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <label for="rating">Rating:</label>
+        <div class="rating">
+            <input type="radio" id="rating5" name="rating" value="5">
+            <label for="rating5">&#9733;</label>
+            <input type="radio" id="rating4" name="rating" value="4">
+            <label for="rating4">&#9733;</label>
+            <input type="radio" id="rating3" name="rating" value="3">
+            <label for="rating3">&#9733;</label>
+            <input type="radio" id="rating2" name="rating" value="2">
+            <label for="rating2">&#9733;</label>
+            <input type="radio" id="rating1" name="rating" value="1">
+            <label for="rating1">&#9733;</label>
+        </div>
+        <br><br>
+        <div id="thank-you-msg" class="hidden">Thank you for your feedback!</div>
+        <button type="submit">Logout</button>
+    </form>
+
+    <script>
+        const ratingInputs = document.querySelectorAll('.rating input');
+        const thankYouMsg = document.getElementById('thank-you-msg');
+
+        ratingInputs.forEach(input => {
+            input.addEventListener('click', () => {
+                thankYouMsg.classList.remove('hidden');
+                ratingInputs.forEach(input => {
+                    input.disabled = true;
+                });
+            });
+        });
+    </script>
+</body>
+</html>
